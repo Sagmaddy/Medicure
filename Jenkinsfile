@@ -15,7 +15,7 @@ pipeline {
          stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t sagmaddy/Medicure:v1 .'
+                    sh 'docker build -t sagmaddy/medicure:v1 .'
                     sh 'docker images'
                 }
             }
