@@ -20,6 +20,14 @@ pipeline {
                 }
             }
         }
+        stage('Deploy') {
+            steps {
+                script {
+                    // Ensure Jenkins has sudo privileges to run docker
+                    sh 'sudo docker run -itd -p 8090:8082 sagmaddy/medicure:v1'
+                }
+            }
+        }
         stage('Push to Docker Hub') {
             steps {
                 withCredentials([string(credentialsId: 'dockerhubpass', variable: 'dockerhubpass')]) {
