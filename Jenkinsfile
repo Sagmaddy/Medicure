@@ -7,5 +7,19 @@ pipeline {
                 git url: 'https://github.com/Sagmaddy/Medicure/', branch: 'master'
             }
         }
+        stage('Build Project') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+         stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'docker build -t sagmaddy/Medicure:v1 .'
+                    sh 'docker images'
+                }
+            }
+        }
+
     }
 }
