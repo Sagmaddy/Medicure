@@ -20,6 +20,14 @@ pipeline {
                 }
             }
         }
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([string(credentialsId: 'dockerhubpass', variable: 'dockerhubpass')]) {
+                    sh 'docker login -u sagmaddy -p ${dockerhubpass}'
+                }
+                sh 'docker push sagmaddy/medicure:v1'
+            }
+        }
 
     }
 }
