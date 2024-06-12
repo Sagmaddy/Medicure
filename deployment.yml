@@ -19,4 +19,4 @@ spec:
       - name: medicure-microservice
         image: sagmaddy/medicure:v1
         ports:
-        - containerPort: 8088
+        - containerPort: 8087
