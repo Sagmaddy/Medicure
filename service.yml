@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: medicure-microservice
+  namespace: medicure
+  labels:
+    app: medicure-microservice
+spec:
+  selector:
+    app: medicure-microservice
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8087
+  type: LoadBalancer
